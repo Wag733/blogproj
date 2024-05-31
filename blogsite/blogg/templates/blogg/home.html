@@ -1,0 +1,74 @@
+{% extends 'blogg/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8; /* Light grayish-blue */
+        }
+        .welcome-container {
+            width: 350px;
+            margin: 50px auto;
+            padding: 50px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #eef2f3 0%, #dbe7ef 100%);
+            text-align: center;
+            color: #fff;
+        }
+        .welcome-header {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333; /* Dark gray text color */
+        }
+        .welcome-text {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            color: #333; /* Dark gray text color */
+        }
+        .btn-custom {
+            margin: 0 10px;
+            min-width: 150px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .btn-custom-signup {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .btn-custom-login {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .btn-custom:hover {
+            transform: translateY(-3px);
+        }
+        .btn-custom-signup:hover {
+            background-color: #5a6268;
+        }
+        .btn-custom-login:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="welcome-container">
+                <h2 class="welcome-header">Welcome!</h2>
+                <p class="welcome-text">Sign up if not already registered else please Login!</p>
+                <div class="d-flex justify-content-center mt-4">
+                    <a href="{% url 'signup' %}" class="btn btn-custom btn-custom-signup">Sign Up</a>
+                    <a href="{% url 'login' %}" class="btn btn-custom btn-custom-login">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

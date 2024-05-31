@@ -1,0 +1,92 @@
+{% extends 'blogg/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #eef2f7; /* Very light blue-gray background */
+            font-family: 'Arial', sans-serif;
+        }
+        .login-box {
+            width: 350px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: #ffffff; /* White background for the login box */
+            text-align: center;
+            color: #333; /* Dark gray text color */
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #007bff; /* Blue color for the header */
+        }
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-box form button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #007bff; /* Blue button background */
+            color: #fff;
+            font-size: 1rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .login-box form button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        .login-box .form-check {
+            margin-top: 15px;
+        }
+        .login-box .form-check-label {
+            margin-left: 5px;
+            font-size: 0.9rem;
+            color: #555; /* Medium gray for the label */
+        }
+        .login-box .error {
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="showPassword">
+                <label class="form-check-label" for="showPassword">Show Password</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Login</button>
+        </form>
+        {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        document.getElementById('showPassword').addEventListener('change', function() {
+            var passwordFields = document.querySelectorAll('input[type="password"]');
+            passwordFields.forEach(function(passwordField) {
+                if (this.checked) {
+                    passwordField.type = 'text';
+                } else {
+                    passwordField.type = 'password';
+                }
+            }, this);
+        });
+    </script>
+</body>
+{% endblock %}
